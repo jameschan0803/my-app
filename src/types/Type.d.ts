@@ -1,4 +1,6 @@
 
+
+
 /* Service Type  */
 
 interface ServiceInit {
@@ -56,6 +58,7 @@ type imageDetail = {
   breed: string;
   subbreed: string;
   url: string;
+  tag: boolean;
 };
 
 type  ImageRes= {
@@ -64,5 +67,12 @@ type  ImageRes= {
   page: number;
   perpage : number;
   total : number;
-  data: string[]
+  data: string[];
+  url:string;
+}
+
+type  singleImageRes= {
+  success: boolean;
+  message: string;
+  data: string;
 }

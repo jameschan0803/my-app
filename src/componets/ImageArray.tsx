@@ -8,6 +8,7 @@ interface ImageArrayProps {
 }
 
 const ImageArray: React.FC<ImageArrayProps> = ({ breedImage }) => {
+  
   const serviceImage = useFetchBreedImageService(
     breedImage.breed,
     breedImage.subbreed
@@ -16,7 +17,8 @@ const ImageArray: React.FC<ImageArrayProps> = ({ breedImage }) => {
   const [imageDetail, setImageDetail] = React.useState<imageDetail>({ 
     breed: "",
     subbreed: "",
-    url: ""
+    url: "",
+    tag:false
    });
 
 
@@ -89,7 +91,8 @@ const ImageArray: React.FC<ImageArrayProps> = ({ breedImage }) => {
                         onClick={() => setImageDetail({ 
                           breed: breedImage.breed,
                           subbreed: breedImage.subbreed,
-                          url: String(url)
+                          url: String(url),
+                          tag:false
                          })}
                         key={url}
                       ></img>
@@ -103,7 +106,8 @@ const ImageArray: React.FC<ImageArrayProps> = ({ breedImage }) => {
          {!!imageDetail.url && <BreedListItemDisplay imageDetail={imageDetail} onClose={() => setImageDetail({ 
                           breed: breedImage.breed,
                           subbreed: breedImage.subbreed,
-                          url: ""
+                          url: "",
+                          tag:false
                          })} />}
       </div>
 

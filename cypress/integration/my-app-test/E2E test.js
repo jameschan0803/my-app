@@ -49,20 +49,6 @@ describe("E2E test:visit the app", function() {
       .wait(5);
   });
 
-  /*it("test case 3: verify the responsive image array", function() {
-    //in image array there are more than 100 pictures
-    //change the screen width, to check weather displaying columns will very between 4 /2 / 1
-
-    cy.viewport(1024, 768); // 1024 * 768,  1024 / 4 = 506
-
-     var x = cy.get('.card').find(".column").first().its('width')
-
-
-      var tmp = Cypress.$(x).length;
-      console.log("tmp",tmp)
-     
-  }); */
-
   it("test case 3: select breed and sub breed in dropdownlist", function() {
     //after loading , select "australian" from select option
     cy.get("#breedList")
@@ -89,5 +75,56 @@ describe("E2E test:visit the app", function() {
       .should($pics => {
         expect($pics).length(1); // img number more than 100
       });
-  });
+  });  
+
+    it("test case 4: deep-link to some certain breed / subbreed", function() {
+      
+      //visit hound breed
+      cy.visit("http://localhost:3000/breed/hound");
+      
+      //loader will show
+      cy.get("#loader")
+      .should("be.visible")
+      .wait(10);
+    cy.get("#loader").should("not.be.visible");
+
+    //breed name display on page
+    cy.get(".data")
+    . contains("hound")
+
+    //its pic and show as well
+    cy.get("#image-container")
+    .find("img")
+    .should($p2 => {
+      expect($p2).to.have.length(1); // img number more than 100
+    })
+    .wait(5);
+    
+
+
+    //visit hound breed , subreed afghan
+    cy.visit("http://localhost:3000/breed/hound/afghan");
+      
+    //loader will show
+    cy.get("#loader")
+    .should("be.visible")
+    .wait(10);
+    cy.get("#loader").should("not.be.visible");
+
+  //breed name display on page
+  cy.get(".data")
+  . contains("hound")
+  
+  cy.get(".data")
+  . contains("afghan")
+
+  //its pic and show as well
+  cy.get("#image-container")
+  .find("img")
+  .should($p2 => {
+    expect($p2).to.have.length(1); // img number more than 100
+  })
+
+     
+  }); 
 });
