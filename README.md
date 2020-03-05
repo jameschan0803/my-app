@@ -1,3 +1,4 @@
+
 # ********* Frontend setting up  *************
 
 - Clone the repository
@@ -21,8 +22,8 @@ npm run build
 ```
 
 - Run cypress integration test, only when the backend/frontend are running, the test will pass 
--  3 test cases are located in cypress/integration/my-app-test : E2E test.js
+-  4 test cases are located in cypress/integration/my-app-test : E2E test.js (the test script is ran based on 3000)
 ```
-npm run cypress:open(the test script is ran based on 3000)
+npm run cypress:open
 ```
 
